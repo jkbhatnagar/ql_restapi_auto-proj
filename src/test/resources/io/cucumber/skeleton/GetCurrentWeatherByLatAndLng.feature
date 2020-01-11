@@ -10,7 +10,7 @@ Feature: Weatherbit weather api for current weather
 	| data[0].timezone			| Australia/Sydney	|
     And response includes the coordinates
 	| data[0].lon 				| 151.21		    |
-	| data[0].lat 				| -33.87		    |
+	| data[0].lat 				| -33.81		    |
     And response includes other mandatory parameters
 	| data[0].wind_spd		|
 	| data[0].clouds		|
