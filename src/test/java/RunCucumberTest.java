@@ -1,5 +1,3 @@
-package io.cucumber.skeleton;
-
 import io.cucumber.junit.CucumberOptions;
 import io.cucumber.junit.Cucumber;
 import org.junit.runner.RunWith;
@@ -9,7 +7,9 @@ import org.junit.runner.RunWith;
         plugin = {
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "json:target/cucumber-report.json"
-        }
+        },
+        features = {"src/test/features"},
+        glue = {"stepdefs"}
 )
 
 public class RunCucumberTest {

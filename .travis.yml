@@ -1,3 +1,3 @@
 language: java
 sudo: false
-script: ./mvnw clean test
+script: ./mvnw clean test -Dcucumber.options="--tags @RegressionTest --plugin com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:output --glue stepdefs"
