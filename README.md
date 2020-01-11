@@ -8,7 +8,8 @@
 
     https://travis-ci.com/jkbhatnagar/ql_restapi_auto-proj/builds
     
-###Run Locally:
+
+### Run Locally:
  - Pre-requisites: java version 13, jdk version 13, maven (optional), internet access, 
  - Download or clone the 'develop' branch locally.
  - Run all TCs : Running without local maven : 
