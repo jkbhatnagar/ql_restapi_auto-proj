@@ -25,6 +25,7 @@ public class StepDefinitions {
 
     private String ENDPOINT_WEATHERBIT = "https://api.weatherbit.io/v2.0/current";
     private String APIKEY = "ea657a6ff545408b939b74b679269f5f";
+    private String INVALID_APIKEY = "ea657a6ff545408b939b74b679269f5";
 
     @Given("I have set response type to json")
     public void i_have_set_response_type_to_json() {
@@ -35,6 +36,11 @@ public class StepDefinitions {
     @Given("I have APIKEY")
     public void i_have_apikey() {
         request.queryParam("key", APIKEY);
+    }
+
+    @Given("I have INVALID_APIKEY")
+    public void i_have_invalid_apikey() {
+        request.queryParam("key", INVALID_APIKEY);
     }
 
     @And("I have latitude {word}")
