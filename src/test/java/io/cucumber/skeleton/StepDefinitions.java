@@ -6,6 +6,7 @@ import io.cucumber.java.en.When;
 import io.cucumber.java.en.Given;
 
 import static io.restassured.RestAssured.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 import io.restassured.response.Response;
@@ -25,63 +26,71 @@ public class StepDefinitions {
     private String ENDPOINT_WEATHERBIT = "https://api.weatherbit.io/v2.0/current";
     private String APIKEY = "ea657a6ff545408b939b74b679269f5f";
 
-    public void setCommons() {
+    @Given("I have set response type to json")
+    public void i_have_set_response_type_to_json() {
         request = given()
-                .contentType("application/json")
-                .log().all();
+                .contentType("application/json").log().all();
     }
 
-    @Given("I have correct latitude {float} and longitude {float}")
-    public void i_have_correct_latitude_and_longitude(Float lat, Float lon) {
-        setCommons();
-        request
-                .queryParam("key", APIKEY)
-                .queryParam("lat", lat.toString())
-                .queryParam("lon", lon.toString());
+    @Given("I have APIKEY")
+    public void i_have_apikey() {
+        request.queryParam("key", APIKEY);
     }
 
-    @Given("I have correct latitude {float} and longitude {float} but no api key")
-    public void I_have_correct_coordinated_but_no_apikey(Float lat, Float lon){
-        setCommons();
-        request
-                .queryParam("lat", lat.toString())
-                .queryParam("lon", lon.toString());
+    @And("I have latitude {word}")
+    public void i_have_latitude(String lat) {
+        request.queryParam("lat", lat);
     }
 
-    @Given("I have missed latitude and longitude")
-    public void I_have_missed_latitude_and_longitude(){
-        setCommons();
-        request
-                .queryParam("key", APIKEY);
+    @And("I have longitude {word}")
+    public void i_have_longitude(String lon) {
+        request.queryParam("lon", lon);
+    }
+
+    @And("I have country code {word}")
+    public void i_have_country(String country) {
+        request.queryParam("country", country);
+    }
+
+    @And("I have post code {word}")
+    public void i_have_postcode(String postcode) {
+        request.queryParam("postal_code", postcode);
     }
 
     @When("I request Weatherbit weather api for current weather")
     public void i_request_current_weather(){
         response = request.when().get(ENDPOINT_WEATHERBIT);
-        System.out.println("response: " + response.prettyPrint());
     }
 
     @Then("the status code is {int}")
     public void verify_status_code(int statusCode){
-        json = response.then().statusCode(statusCode);
+        json = response.then().statusCode(statusCode).log().all();
     }
 
-    @And("response includes the count$")
+    @And("response includes correct headers$")
+    public void response_includes_correct_headers(Map<String,String> requiredHeaders){
+        String checkedHeaderValue = "";
+        for (Map.Entry<String, String> field : requiredHeaders.entrySet()) {
+            assertThat(response.getHeader(field.getKey()), equalTo(field.getValue()));
+        }
+    }
+
+    @And("response includes the following integer values$")
     public void response_includes_integer(Map<String,Integer> responseFields){
         for (Map.Entry<String, Integer> field : responseFields.entrySet()) {
             json.body(field.getKey(), equalTo(field.getValue()));
         }
     }
 
-    @And("response includes the timezone$")
+    @And("response includes the following string values$")
     public void response_includes_string(Map<String,String> responseFields){
         for (Map.Entry<String, String> field : responseFields.entrySet()) {
             json.body(field.getKey(), equalTo(field.getValue()));
         }
     }
 
-    @And("response includes the coordinates$")
-    public void response_includes_many(Map<String,Float> responseFields){
+    @And("response includes the following float values$")
+    public void response_includes_float(Map<String,Float> responseFields){
         for (Map.Entry<String, Float> field : responseFields.entrySet()) {
             json.body(field.getKey(), equalTo(field.getValue()));
         }
@@ -93,4 +102,10 @@ public class StepDefinitions {
             json.body(field, notNullValue());
         }
     }
+
+    @And("response includes error {string}")
+    public void response_includes_error(String msg){
+        json.body("error", containsString(msg));
+    }
+
 }
