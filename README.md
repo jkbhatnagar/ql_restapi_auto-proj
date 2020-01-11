@@ -1,7 +1,13 @@
 # REST API Automation - Java - RestAssured - Cucumber - Extent Reports
 
+[![Build Status](https://travis-ci.com/jkbhatnagar/ql_restapi_auto-proj.svg?branch=develop)](https://travis-ci.com/jkbhatnagar/ql_restapi_auto-proj)
+
 ## USAGE
 
+### Travis CI Builds
+
+    https://travis-ci.com/jkbhatnagar/ql_restapi_auto-proj/builds
+    
 ###Run Locally:
  - Pre-requisites: java version 13, jdk version 13, maven (optional), internet access, 
  - Download or clone the 'develop' branch locally.
@@ -26,17 +32,7 @@
 - Add new Cucumber feature files to src/test/features.
 - Add new Step Definition files to src/test/stepdefs.
 
-## RESOURCE REFERENCES
-- Cucumber base
-
-        https://github.com/cucumber/cucumber-java-skeleton
-
-- Samples
-
-        https://github.com/angiejones/restassured-with-cucumber-demo
-        https://github.com/raghwendra-sonu/REST-assured_Cucumber
-
-## IMPROVEMENTS TBD
+## TASK LIST
 
 ### Completed
 - [x] Add Cucumber support
@@ -74,4 +70,14 @@
 
 ![Defects](/screenshots/Defects.png)
 
+
+## RESOURCE REFERENCES
+- Cucumber base
+
+        https://github.com/cucumber/cucumber-java-skeleton
+
+- Samples
+
+        https://github.com/angiejones/restassured-with-cucumber-demo
+        https://github.com/raghwendra-sonu/REST-assured_Cucumber
 
