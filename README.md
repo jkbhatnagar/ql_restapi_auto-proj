@@ -41,23 +41,25 @@
 - [x] Add RestAssured support
 - [x] Add Extent Report support
 - [x] Use Cucumber @Tags to categorize Test Scenarios into @SmokeTest and @RegressionTest
-- [x] Read constants and globals from Contants.java or a .properties file
+- [x] Read constants and globals from Constants.java or a .properties file
 
 ### Pending
+- [ ] Add more descriptive comments.
+- [ ] Export json and extent reports to S3 buckets.
+- [ ] Use cucumber-picocontainer to add Dependency Injection to share in-flight test objects between test cases
 - [ ] Split Step definition and feature for different services to separate files
-- [ ] Create model POJO classes for Success and Failure resposes and extract response in the for advanced assertions, path assertions, and sharing objects between inflight test cases
+- [ ] Create model POJO classes for Success and Failure responses and extract response in the for advanced assertions, path assertions, and sharing objects between in-flight test cases
 - [ ] Add assertion failure comments (if required)
 - [ ] Pretty print request and responses in logs
 - [ ] Generate a log file
 - [ ] Use YAML or Properties file based test data
 - [ ] Add test data in Cucumber steps as "Example" and then use <placeholder> tags to avoid repeating same data in Given and Then (must if reading data from external file)
 - [ ] Add Environment changer so that same code and assertions can be used with different data for different Test Environments (SIT/UAT/PROD)
-- [ ] Use cucumber-picocontainer to add Dependency Injection to share inflight test objects between test cases
 
         https://www.coveros.com/using-dependency-injectors-simplify-code-cucumber/
         http://www.thinkcode.se/blog/2017/04/01/sharing-state-between-steps-in-cucumberjvm-using-picocontainer
 
-- Move common tasks and assertions to utlity class
+- Move common tasks and assertions to utility class
 
         https://github.com/jaganduraisamy/RestAssured-BDD-Java/blob/master/src/test/java/utilities/Utils.java
 
@@ -81,4 +83,3 @@
 
         https://github.com/angiejones/restassured-with-cucumber-demo
         https://github.com/raghwendra-sonu/REST-assured_Cucumber
-
