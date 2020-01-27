@@ -1,12 +1,12 @@
 # REST API Automation - Java - RestAssured - Cucumber - Extent Reports
 
-[![Build Status](https://travis-ci.com/jkbhatnagar/ql_restapi_auto-proj.svg?branch=develop)](https://travis-ci.com/jkbhatnagar/ql_restapi_auto-proj)
+[![Build Status](https://travis-ci.com/jkbhatnagar/qa-samples-java-selenium-restassured-cucumber-restapi.svg?branch=develop)](https://travis-ci.com/jkbhatnagar/qa-samples-java-selenium-restassured-cucumber-restapi)
 
 ## USAGE
 
 ### Travis CI Builds
 
-    https://travis-ci.com/jkbhatnagar/ql_restapi_auto-proj/builds
+    https://travis-ci.com/jkbhatnagar/qa-samples-java-selenium-restassured-cucumber-restapi/builds
     
 
 ### Run Locally:
